@@ -19,23 +19,23 @@ public class SurveyController {
 
 	@Autowired
 	private ISurveyService surveyService;
-	
+
 	@GetMapping("/getAll")
-	public ResponseEntity<List<Survey>> getAll(){
-	List<Survey> surveyList = surveyService.getAll();
-	if(Objects.nonNull(surveyList)) {
-		return new ResponseEntity<List<Survey>>(surveyList, HttpStatus.OK);
-	}
+	public ResponseEntity<List<Survey>> getAll() {
+		List<Survey> surveyList = surveyService.getAll();
+		if (Objects.nonNull(surveyList)) {
+			return new ResponseEntity<List<Survey>>(surveyList, HttpStatus.OK);
+		}
 		return new ResponseEntity<List<Survey>>(HttpStatus.NOT_FOUND);
 	}
-	
+
 	@PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Survey> save(@RequestBody Survey survey){
+	public ResponseEntity<Survey> save(@RequestBody Survey survey) {
 		Survey surveyResponse = surveyService.save(survey);
-		if(Objects.nonNull(surveyResponse)) {
+		if (Objects.nonNull(surveyResponse)) {
 			return new ResponseEntity<Survey>(surveyResponse, HttpStatus.CREATED);
 		}
-		
+
 		return new ResponseEntity<Survey>(HttpStatus.CONFLICT);
 	}
 }

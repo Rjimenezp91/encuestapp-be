@@ -10,24 +10,29 @@ import com.tresIt.encuestapp.be.repository.ISurveyRepository;
 import com.tresIt.encuestapp.be.service.ISurveyService;
 
 @Service
-public class SurveyService implements ISurveyService{
+public class SurveyServiceImpl implements ISurveyService {
 
 	@Autowired
 	private ISurveyRepository surveyRepository;
-	
+
 	@Override
 	public List<Survey> getAll() {
 		return surveyRepository.findAll();
-		
+
 	}
 
 	@Override
 	public Survey save(Survey survey) {
 		Survey saveSurvey = new Survey();
-		saveSurvey.setChoice(survey.getChoice());
-		saveSurvey.setEmail(survey.getEmail());
-		return surveyRepository.save(saveSurvey);
-		
+		if (!survey.equals(null)) {
+
+			saveSurvey.setChoice(survey.getChoice());
+			saveSurvey.setEmail(survey.getEmail());
+
+			return surveyRepository.save(saveSurvey);
+		}
+
+		return null;
 	}
 
 }
