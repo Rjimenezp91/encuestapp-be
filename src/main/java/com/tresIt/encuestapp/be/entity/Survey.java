@@ -8,19 +8,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Survey implements Serializable{
-	
+public class Survey implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String email;
-	
+
 	private String choice;
-	
-	public Survey() {}
+
+	public Survey() {
+	}
 
 	public Survey(Long id, String email, String choice) {
 		super();
@@ -52,6 +53,5 @@ public class Survey implements Serializable{
 	public void setChoice(String choice) {
 		this.choice = choice;
 	}
-		
 
 }
